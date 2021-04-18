@@ -20,7 +20,9 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Post" >
+      <Stack.Navigator initialRouteName="Post" screenOptions={{
+    headerShown: false
+  }}>
         <Stack.Screen
           name="Post"
           component={PostScreen}
@@ -36,11 +38,9 @@ function PostScreen({navigation}){
 }
 
 function CommentScreen({route,navigation}){
-  const id=route.params.itemId;
-  const url1="https://jsonplaceholder.typicode.com/posts/"+id;
-  const url2="https://jsonplaceholder.typicode.com/comments?postId="+id;
+  console.log(route.params.itemId)
   return (
-    <Comment urla={url1} urlb={url2} navigation={navigation}></Comment>
+    <Comment id={route.params.itemId} navigation={navigation}></Comment>
   )
 }
 
